@@ -37,10 +37,10 @@ String simplifyPath(String path) {
     }
    
     // remove leading dots 
-    if(path.startsWith("../")){
+    while(path.startsWith("../")){
         path = path.substring(2);
     }
-    else if (path.startsWith("./")){
+    while(path.startsWith("./")){
         path = path.substring(1);
     }
     
