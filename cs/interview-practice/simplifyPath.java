@@ -1,3 +1,8 @@
+/**
+ * SimplifyPath.java: 
+ * https://app.codesignal.com/interview-practice/task/aRwxhGcmvhf6vKPCp
+ */
+
 String simplifyPath(String path) {
 
     // start with root if not yet
@@ -47,8 +52,6 @@ String simplifyPath(String path) {
     // make sure it doesn't end in '/' unless that's all it is
     if(path.length() > 1 && path.endsWith("/")){
         path = path.substring(0,path.length() - 1);
-    }
-    
-    
+    }    
     return path;
 }
