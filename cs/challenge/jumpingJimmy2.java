@@ -1,4 +1,4 @@
-Jumping Jimmy is back, and he's ready to tackle a new tower!
+/* Jumping Jimmy is back, and he's ready to tackle a new tower!
 
 He has the same goal as before (keep jumping as high as possible until he gets to the top or can't jump any higher), but this tower is a little different from the last one - some of the floors can affect Jimmy's jump height!
 
@@ -56,7 +56,7 @@ Guaranteed constraints:
 
 An integer representing the height of the highest floor Jimmy is able to reach (either the top of the tower or the point where he isn't able to complete the next jump).
 
-
+*/
 
 
 
