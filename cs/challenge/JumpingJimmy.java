@@ -9,26 +9,36 @@ public class JumpingJimmy {
 	int jumpingJimmy(int[] tower, int jumpHeight) {
 
 	    int y = 0;
-	    int i = 0;
+	    int level = 0;
 	    boolean stuck = false;
-	    while (i < tower.length && stuck == false){
-	        
-	        if(tower[i] > jumpHeight){
+	    while (level + 1< tower.length && stuck == false){
+	    	String s = "height: " + y + ", level " + level;
+	        System.out.println(s);
+	        if(tower[level+1] > jumpHeight){
 	            stuck = true;
 	            return y;
 	        }
 	        else {
-	            int j = i;
-	            while (j < tower.length - 1 && tower[j] <= jumpHeight){
+	            int j = level + 1;
+	            while (j < tower.length && tower[j] - tower[level] <= jumpHeight){
 	                j++;
 	            }
 	            y += tower[j];
-	            i = j;
+	            level = j;
 	        }
 	        
 	    }
 	    
 	    return y;
+	}
+	
+	public static void main(String[] args){
+		JumpingJimmy jj = new JumpingJimmy();
+		int[] tower = {3, 1, 2};
+		int jumpHeight = 3;
+		int ans = jj.jumpingJimmy(tower, jumpHeight);
+		
+		System.out.println("Answer: \t" + ans);
 	}
 
 }
