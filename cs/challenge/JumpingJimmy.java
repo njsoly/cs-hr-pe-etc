@@ -11,19 +11,24 @@ public class JumpingJimmy {
 	    int y = 0;
 	    int level = 0;
 	    boolean stuck = false;
-	    while (level + 1< tower.length && stuck == false){
+	    while (level < tower.length && stuck == false){
 	    	String s = "height: " + y + ", level " + level;
 	        System.out.println(s);
-	        if(tower[level+1] > jumpHeight){
+	        if(level+1 < tower.length && y + tower[level+1] > jumpHeight){
 	            stuck = true;
 	            return y;
 	        }
 	        else {
-	            int j = level + 1;
-	            while (j < tower.length && tower[j] - tower[level] <= jumpHeight){
+	        	int inc = 0; // current increment.  accumulator for a multi-floor jump
+	        	int j = level + 1;
+	            System.out.println("before while: level " + level + "; \tinc: " + inc + "; \tj: " + j);
+	           
+	            while (j < tower.length && tower[j] + inc + y <= jumpHeight){
+	            	inc += tower[j];
 	                j++;
 	            }
-	            y += tower[j];
+	            System.out.println("adding " + inc + " to height; now level " + j);
+	            y += inc;
 	            level = j;
 	        }
 	        
