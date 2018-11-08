@@ -1,5 +1,10 @@
 package cs.challenge;
 
+/**
+ * Jumping Jimmy.  
+ * @author Nate J Solyntjes
+ *
+ */
 public class JumpingJimmy {
 
 	static final boolean DEBUG = false;
@@ -28,8 +33,22 @@ public class JumpingJimmy {
 	        }
 	        
 	    }
-	    
+
+	    if(DEBUG) sop("Answer: \t" + y);
+
 	    return y;
+	}
+	
+	class Jimmy {
+		int[] tower = null;
+		int jumpHeight;
+		int towerLevel;
+		int height;
+		
+		Jimmy(){
+			
+		}
+		
 	}
 	
 	public static void main(String[] args){
@@ -38,7 +57,6 @@ public class JumpingJimmy {
 		int jumpHeight = 3;
 		int ans = jj.jumpingJimmy(tower, jumpHeight);
 		
-		System.out.println("Answer: \t" + ans);
 	}
 
 }
