@@ -1,4 +1,5 @@
 package cs.challenge;
+import static util.Helper.sop;
 
 /**
  * Jumping Jimmy.  
@@ -14,27 +15,16 @@ public class JumpingJimmy {
 	int jumpingJimmy(int[] tower, int jumpHeight) {
 
 	    int y = 0;
-	    int level = 0;
-	    boolean stuck = false;
-	    while (level + 1< tower.length && stuck == false){
-	    	String s = "height: " + y + ", level " + level;
-	        System.out.println(s);
-	        if(tower[level+1] > jumpHeight){
-	            stuck = true;
-	            return y;
-	        }
-	        else {
-	            int j = level + 1;
-	            while (j < tower.length && tower[j] - tower[level] <= jumpHeight){
-	                j++;
-	            }
-	            y += tower[j];
-	            level = j;
-	        }
-	        
+	    int level = -1;
+	    
+	    Jimmy j = new Jimmy(tower, jumpHeight);
+	    
+	    while(j.isStuck() == false && j.isAtTop() == false){
+	    	y = j.jump();
 	    }
-
+	    
 	    if(DEBUG) sop("Answer: \t" + y);
+
 
 	    return y;
 	}
@@ -42,11 +32,53 @@ public class JumpingJimmy {
 	class Jimmy {
 		int[] tower = null;
 		int jumpHeight;
-		int towerLevel;
-		int height;
+		int towerLevel = -1;
+		int height = 0;
 		
 		Jimmy(){
 			
+		}
+		Jimmy(int[] tower, int jumpHeight){
+			this();
+			this.tower = tower;
+			this.jumpHeight = jumpHeight;
+			
+		}
+		boolean isStuck(){
+			if(towerLevel == tower.length - 1){ return false; }
+			if(tower[towerLevel + 1] <= jumpHeight) return false;
+			else return true;
+		}
+		boolean isAtTop(){
+			return (this.towerLevel == this.tower.length - 1);
+		}
+		
+		int jump(){
+			if(isStuck() || isAtTop()) return height;
+			
+			int next = -1;
+			int dh = 0;
+			
+			for(int i = towerLevel + 1; i < tower.length; i++){
+				if(dh + tower[i] <= jumpHeight){
+					if(DEBUG)
+						sop("can jump from [" + towerLevel + "] to [" + i + "], diff: " + dh);
+					dh += tower[i];
+					next = i;
+				}
+				else {
+					if(DEBUG) 
+						sop("can't go to [" + (i+1) + "]; dh < jh (" + dh + " < " + (dh + tower[i]) + ").");
+					break;
+				}
+
+			}
+			this.towerLevel = next;
+			this.height += dh;
+			if(DEBUG) 
+				sop("Now at tower[" + towerLevel + "], at height: " + this.height);
+			
+			return height;
 		}
 		
 	}
@@ -56,7 +88,7 @@ public class JumpingJimmy {
 		int[] tower = {3, 1, 2};
 		int jumpHeight = 3;
 		int ans = jj.jumpingJimmy(tower, jumpHeight);
-		
+		sop("answer: " + ans);
 	}
 
 }
