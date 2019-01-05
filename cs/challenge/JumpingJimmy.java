@@ -34,15 +34,13 @@ public class JumpingJimmy {
 		int jumpHeight;
 		int towerLevel = -1;
 		int height = 0;
-		
 		Jimmy(){
 			
 		}
 		Jimmy(int[] tower, int jumpHeight){
 			this();
 			this.tower = tower;
-			this.jumpHeight = jumpHeight;
-			
+			this.jumpHeight = jumpHeight;	
 		}
 		boolean isStuck(){
 			if(towerLevel == tower.length - 1){ return false; }
@@ -51,8 +49,7 @@ public class JumpingJimmy {
 		}
 		boolean isAtTop(){
 			return (this.towerLevel == this.tower.length - 1);
-		}
-		
+		}		
 		int jump(){
 			if(isStuck() || isAtTop()) return height;
 			
@@ -71,18 +68,13 @@ public class JumpingJimmy {
 						sop("can't go to [" + (i+1) + "]; dh < jh (" + dh + " < " + (dh + tower[i]) + ").");
 					break;
 				}
-
 			}
 			this.towerLevel = next;
 			this.height += dh;
-			if(DEBUG) 
-				sop("Now at tower[" + towerLevel + "], at height: " + this.height);
-			
+			if(DEBUG) sop("Now at tower[" + towerLevel + "], at height: " + this.height);
 			return height;
 		}
-		
 	}
-	
 	public static void main(String[] args){
 		JumpingJimmy jj = new JumpingJimmy();
 		int[] tower = {3, 1, 2};
@@ -90,5 +82,4 @@ public class JumpingJimmy {
 		int ans = jj.jumpingJimmy(tower, jumpHeight);
 		sop("answer: " + ans);
 	}
-
 }
