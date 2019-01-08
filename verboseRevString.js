@@ -1,3 +1,4 @@
+/** I forget why I wrote this function, or what it is good for... */
 function verboseRevString(s){
 	if(typeof s == "undefined"){
 		s = 'snth';
