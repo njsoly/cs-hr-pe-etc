@@ -5,7 +5,7 @@ class Euler75 {
 
     private val uniqueSolutions = mutableSetOf<Long>()
 
-    fun countMultiples(n: Long) : Int {
+    private fun countMultiples(n: Long) : Int {
         var multipleCount = 0
         uniqueSolutions.forEach { uniqueSolution ->
             if (n % uniqueSolution == 0L) {
@@ -18,7 +18,7 @@ class Euler75 {
         return multipleCount
     }
 
-    fun getSolutionsOfLength(n: Long) : List<Long> {
+    private fun getSolutionsOfLength(n: Long) : List<Long> {
         when (countMultiples(n)) {
             1 -> return listOf(n)
             2 -> return emptyList()
