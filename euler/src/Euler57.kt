@@ -16,10 +16,6 @@ class Euler57 {
         iterations.add(Pair(num, denom))
     }
 
-    private fun digitsOf(i: Long): Int {
-        return i.toString().length
-    }
-
     fun countNumeratorsWithMoreDigits() : Int {
         var count: Int = 0
         iterations.forEach { pair ->
