@@ -33,6 +33,6 @@ fun main(){
     while (e.iterations.size < 1000) {
         e.expandNextIteration()
     }
-    println(e.iterations)
+//    println(e.iterations)
     println(e.countNumeratorsWithMoreDigits())
 }
